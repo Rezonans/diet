@@ -2,8 +2,19 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'rails-api'
-gem 'spring', :group => :development
 gem 'pg'
+gem 'devise'
+
+gem 'jwt_authentication', github: 'GitAlexei/jwt_authentication'
+
+group :development do
+  gem 'spring'
+end
+
+group :development, :test do
+  gem 'quiet_assets'
+  gem 'thin'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
