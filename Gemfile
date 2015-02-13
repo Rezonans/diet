@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 gem 'rails-api'
 gem 'pg'
+gem 'jwt_authentication', :git => 'https://github.com/GitAlexei/jwt_authentication.git', :branch => 'master'
 gem 'devise'
 
-gem 'jwt_authentication', github: 'GitAlexei/jwt_authentication'
 
 group :development do
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :development, :test do
