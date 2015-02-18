@@ -2,4 +2,4 @@
 
 /* Controllers */
 
-angular.module('app').controller('AppCtrl', function() {});
+angular.module('app').controller('AppCtrl', function($scope, $modal) {});
