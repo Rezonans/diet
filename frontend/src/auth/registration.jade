@@ -1,0 +1,15 @@
+h2 Registaration form
+
+form(ng-submit="submit()" name="registrationForm")
+  .form-group
+    input.form-control(name="email" ng-model="user.email" type="email" placeholder="Email" required)
+    div.error(ng-if="errors" ng-repeat="error in errors")
+      span.error {{error}}
+  .form-group
+    input.form-control(name="password" ng-model="user.password" type="password" placeholder="Password" required)
+  .form-group
+    input.form-control(name="password" ng-model="user.password_confirmation" type="password" placeholder="Password confirmation" required)
+  .form-group
+    button.btn.btn-success(type="submit" ng-disabled="registrationForm.$invalid") Submit
+    a.btn.btn-link(href="javascript:;" ui-sref="^.login") Already registered
+

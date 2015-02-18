@@ -11,12 +11,38 @@ angular.module('app')
       .state('app', {
         abstract: true,
         controller: 'AppCtrl',
-        templateUrl: 'app/app.html'
+        templateUrl: 'app/app.html',
+        data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth.login'
+          }
+        }
       })
       .state('app.dashboard', {
         url: '/',
         controller: 'MealsCtrl',
         templateUrl: 'meals/meals.html'
+      })
+      .state('auth', {
+        abstract: true,
+        templateUrl: 'auth/main.html',
+        data: {
+          permissions: {
+            only: ['anonymous'],
+            redirectTo: 'auth.dashboard'
+          }
+        }
+      })
+      .state('auth.registration', {
+        url: '/registration',
+        templateUrl: 'auth/registration.html',
+        controller: 'AuthRegistrationCtrl'
+      })
+      .state('auth.login', {
+        url: '/login',
+        templateUrl: 'auth/login.html',
+        controller: 'AuthLoginCtrl'
       });
 
     $urlRouterProvider.otherwise('/');

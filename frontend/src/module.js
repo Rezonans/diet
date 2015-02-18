@@ -8,5 +8,7 @@ angular.module('app', [
   'ui.jq',
   'ui.validate',
   'templates',
-  'ui.router'
+  'ui.router',
+  'permission',
+  'satellizer'
 ]);
