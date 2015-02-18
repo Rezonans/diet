@@ -1,0 +1,51 @@
+{
+  "name": "diet-frontend",
+  "version": "0.1.0",
+  "authors": [
+    "Rodion <rodion@brocoders.com>"
+  ],
+  "description": "Diet frontend",
+  "main": "main.js",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "lodash": "~2.4.1",
+    "bootstrap": "~3.3.1",
+    "angular": "~1.3.2",
+    "angular-bootstrap": "~0.11.2",
+    "angular-ui-utils": "~0.1.1",
+    "ngstorage": "~0.3.0",
+    "angular-cookies": "~1.3.2",
+    "angular-sanitize": "~1.3.2",
+    "angular-local-storage": "~0.1.5",
+    "angular-ui-router": "~0.2.13"
+  },
+  "overrides": {
+    "es5-shim": {
+      "ignore": true
+    },
+    "jquery.lazyload": {
+      "main": "jquery.lazyload.js"
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff"
+      ]
+    }
+  }
+}
