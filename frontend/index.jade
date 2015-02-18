@@ -1,0 +1,13 @@
+doctype html
+html(lang='en', data-ng-app='app')
+  head
+    base(href="/")
+    meta(charset='utf-8')
+    title Diet app
+    meta(name='description', content='Form autosave feature')
+    //- inject:css
+    //- endinject
+  body
+    #app.app(ui-view='')
+    //- inject:js
+    //- endinject
