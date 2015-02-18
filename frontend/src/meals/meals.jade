@@ -1,6 +1,11 @@
-.meals(ng-repeat="meal in meals")
-   .meal
-      .date {{meal.date}}
-      .time {{meal.date}}
-      .text {{meal.text}}
-      .callories {{meal.callories}}
+.row
+  a.btn.btn-default(ng-click='addMeal()') Add meal
+.row
+   .meals(ng-repeat="meal in meals")
+      p.row.meal
+         .datetime
+            span.date Date: {{meal.datetime | date:'mediumDate'}}
+            | &nbsp;&nbsp;&nbsp;
+            span.time Time: {{meal.datetime| date:'shortTime'}}
+         .text Text: {{meal.text}}
+         .callories Callories: {{meal.calories}}

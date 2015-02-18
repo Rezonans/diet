@@ -10,6 +10,7 @@ angular.module('app')
     $stateProvider
       .state('app', {
         abstract: true,
+        controller: 'AppCtrl',
         templateUrl: 'app/app.html'
       })
       .state('app.dashboard', {
