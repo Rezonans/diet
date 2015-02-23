@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
 
     it 'returns user data' do
       get :show, {id: @user.to_param, user_token: @user_token }
-      user = JSON.parse(response.body)
+      user = JSON.parse(response.body)['resource']
       expect(user['daily_calories_limit']).to eql(@user.daily_calories_limit)
 
     end
@@ -35,13 +35,13 @@ RSpec.describe UsersController, type: :controller do
 
       it 'returns changed user in response' do
         put :update, {id: @user.to_param, user: new_attributes, user_token: @user_token}
-        user = JSON.parse(response.body)
+        user = JSON.parse(response.body)['resource']
         expect(user['daily_calories_limit']).to eq(new_attributes[:daily_calories_limit])
       end
 
       it 'allow update only own attributes' do
         put :update, {id: user_2.to_param, user: new_attributes, user_token: @user_token}
-        user = JSON.parse(response.body)
+        user = JSON.parse(response.body)['resource']
         expect(user['daily_calories_limit']).to eq(new_attributes[:daily_calories_limit])
       end
     end
