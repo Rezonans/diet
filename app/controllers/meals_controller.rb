@@ -1,10 +1,8 @@
 class MealsController < ApplicationController
   acts_as_jwt_authentication_handler
-
-  before_action :set_meal, only: [:show, :update, :destroy]
+  load_and_authorize_resource :meal, through: :current_user
 
   def index
-    @meals = Meal.by_user(filter_params[:user_id])
     @meals = @meals.time_filter(filter_params[:date], :date).
                     time_filter(filter_params[:time], :time)
 
@@ -31,10 +29,6 @@ class MealsController < ApplicationController
   end
 
   private
-
-  def set_meal
-    @meal = Meal.find(params[:id])
-  end
 
   def meal_params
     params.require(:meal).permit(:name, :time, :calories)

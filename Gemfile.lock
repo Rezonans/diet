@@ -50,6 +50,7 @@ GEM
     arel (6.0.0)
     bcrypt (3.1.10)
     builder (3.2.2)
+    cancancan (1.10.1)
     daemons (1.1.9)
     database_cleaner (1.4.0)
     devise (3.4.1)
@@ -171,6 +172,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancancan (~> 1.10)
   database_cleaner
   devise
   factory_girl_rails

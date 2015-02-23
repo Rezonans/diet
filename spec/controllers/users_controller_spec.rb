@@ -41,8 +41,8 @@ RSpec.describe UsersController, type: :controller do
 
       it 'allow update only own attributes' do
         put :update, {id: user_2.to_param, user: new_attributes, user_token: @user_token}
-        user = JSON.parse(response.body)['resource']
-        expect(user['daily_calories_limit']).to eq(new_attributes[:daily_calories_limit])
+        error = JSON.parse(response.body)['errors']
+        expect(error).to eq('You are not authorized to access this page.')
       end
     end
   end
