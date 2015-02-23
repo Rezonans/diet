@@ -5,20 +5,24 @@
 angular.module('app').controller('MealsIndexCtrl', function($scope, $modal, Restangular) {
   $scope.meals = [];
 
-  Restangular.all('meals').getList().then(function(meals) {
-    $scope.meals = meals;
-  });
+  loadMeals();
 
   $scope.addMeal = addMeal;
   $scope.editMeal = editMeal;
   $scope.deleteMeal = deleteMeal;
 
+  function loadMeals() {
+    Restangular.all('meals').getList().then(function(meals) {
+      $scope.meals = meals;
+    });
+  }
+
   function addMeal() {
     $modal.open({
       templateUrl: 'meals/create.html',
       controller: 'MealCreateCtrl'
-    }).result.then(function(model) {
-      $scope.meals.push(model);
+    }).result.then(function() {
+        loadMeals();
     });
   }
 
@@ -29,8 +33,8 @@ angular.module('app').controller('MealsIndexCtrl', function($scope, $modal, Rest
       resolve: {
         meal: function() { return meal; }
       }
-    }).result.then(function(model) {
-        _.assign(meal, model.plain());
+    }).result.then(function() {
+        loadMeals();
     });
   }
 
