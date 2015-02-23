@@ -14,6 +14,11 @@ end
 group :development, :test do
   gem 'quiet_assets'
   gem 'thin'
+  gem 'rspec-rails', '~> 3.1'
+  gem 'json_spec'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 # To use ActiveModel has_secure_password
