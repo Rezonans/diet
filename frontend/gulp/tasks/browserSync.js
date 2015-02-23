@@ -7,7 +7,7 @@ var gulp        = require('gulp');
 gulp.task('browserSync', function() {
 
   browserSync({
-    proxy: 'localhost:3001',
+    proxy: 'diet.dev',
     port: config.browserPort
   });
 

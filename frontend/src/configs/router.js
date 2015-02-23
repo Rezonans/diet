@@ -21,8 +21,8 @@ angular.module('app')
       })
       .state('app.dashboard', {
         url: '/',
-        controller: 'MealsCtrl',
-        templateUrl: 'meals/meals.html'
+        controller: 'MealsIndexCtrl',
+        templateUrl: 'meals/index.html'
       })
       .state('auth', {
         abstract: true,

@@ -25,13 +25,13 @@ class MealsController < ApplicationController
 
   def destroy
     @meal.destroy
-    head :no_content
+    render nothing: true
   end
 
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :time, :calories)
+    params.require(:resource).permit(:name, :time, :calories)
   end
   def filter_params
     params.permit({date: [:from, :to]}, {time: [:from, :to]}, :user_id)

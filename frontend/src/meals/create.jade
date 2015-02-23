@@ -1,0 +1,19 @@
+.modal-header
+  h3 Create new meal
+.modal-body
+  form(name="mealForm")
+    .form-group
+      label(for="create-meal-date") Date
+      datepicker(ng-model="meal.time")
+    .form-group
+      label(for="create-meal-time") Time
+      timepicker#create-meal-time(ng-model="meal.time")
+    .form-group
+      label(for="create-meal-text") Text
+      input#create-meal-text.form-control(type="text" ng-model="meal.name" required)
+    .form-group
+      label(for="create-meal-calories") Calories
+      input#create-meal-calories.form-control(type="number" ng-model="meal.calories" required min="0")
+.modal-footer
+  button.btn.btn-primary(ng-click="ok()" ng-disabled="mealForm.$invalid") OK
+  button.btn.btn-warning(ng-click="cancel()") Cancel

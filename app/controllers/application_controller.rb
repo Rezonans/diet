@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::API
   include CanCan::ControllerAdditions
 
+  acts_as_jwt_authentication_handler
+
+  respond_to :json
+
+  private
+
+  def jwt_not_authenticated
+    render nothing: true, status: :unauthorized
+  end
+  
   def render_resource_or_errors(resource, options = {})
     if resource.errors.empty?
       render_resource_data(resource, options)
