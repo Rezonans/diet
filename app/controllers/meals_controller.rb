@@ -7,28 +7,22 @@ class MealsController < ApplicationController
     @meals = Meal.by_user(filter_params[:user_id])
     @meals = @meals.time_filter(filter_params[:date], :date).
                     time_filter(filter_params[:time], :time)
-    render json: @meals
+
+    render json: { resources: @meals }
   end
 
   def show
-    render json: @meal
+    render_resource_or_errors(@meal)
   end
 
   def create
-    @meal = current_user.meals.new(meal_params)
-    if @meal.save
-      render json: @meal, status: :created
-    else
-      render json: { errors: @meal.errors }, status: :unprocessable_entity
-    end
+    @meal = current_user.meals.create(meal_params)
+    render_resource_or_errors(@meal)
   end
 
   def update
-    if @meal.update(meal_params)
-      render json: @meal, status: :ok
-    else
-      render json: { errors: @meal.errors }, status: :unprocessable_entity
-    end
+    @meal.update(meal_params)
+    render_resource_or_errors(@meal)
   end
 
   def destroy

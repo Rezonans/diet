@@ -19,13 +19,13 @@ RSpec.describe MealsController, type: :controller do
 
     it 'returns list of meals' do
       get :index, { user_token: @user_token, user_id: @user.id }
-      meals = JSON.parse(response.body)
+      meals = JSON.parse(response.body)['resources']
       expect(meals).to be_a_kind_of(Array)
     end
 
     it 'returns correct number of meals' do
       get :index, user_token: @user_token, user_id: @user.id
-      meals = JSON.parse(response.body)
+      meals = JSON.parse(response.body)['resources']
       expect(meals.count).to eq(3)
     end
   end
@@ -42,7 +42,7 @@ RSpec.describe MealsController, type: :controller do
 
     it 'returns meal data' do
       get :show, {id: @meal.to_param, user_token: @user_token }
-      meal = JSON.parse(response.body)
+      meal = JSON.parse(response.body)['resource']
       expect(meal['name']).to eql(@meal.name)
       expect(meal['calories']).to eql(@meal.calories)
     end
@@ -67,13 +67,13 @@ RSpec.describe MealsController, type: :controller do
     describe 'with valid params' do
       it 'creates a new meal' do
         expect {
-          post :create, {meal: valid_params, user_token: @user_token}
-        }.to change{Meal.count}.by(1)
+          post :create, { meal: valid_params, user_token: @user_token }
+        }.to change{ Meal.count }.by(1)
       end
 
       it 'returns meal in json' do
         post :create, {meal: valid_params, user_token: @user_token}
-        meal = JSON.parse(response.body)
+        meal = JSON.parse(response.body)['resource']
         expect(meal['name']).to eq(valid_params[:name])
       end
     end
@@ -81,8 +81,8 @@ RSpec.describe MealsController, type: :controller do
     describe 'with invalid params' do
       it 'returns errors' do
         post :create, {meal: invalid_params, user_token: @user_token}
-        meal = JSON.parse(response.body)
-        expect(meal).to have_key('errors')
+        json = JSON.parse(response.body)
+        expect(json).to have_key('errors')
       end
     end
   end
@@ -103,7 +103,7 @@ RSpec.describe MealsController, type: :controller do
 
       it 'returns changed meal in response' do
         put :update, {id: meal.to_param, meal: new_attributes, user_token: @user_token}
-        meal = JSON.parse(response.body)
+        meal = JSON.parse(response.body)['resource']
 
         expect(meal['name']).to eq(new_attributes[:name])
       end
