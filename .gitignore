@@ -34,3 +34,4 @@ config/secrets.yml
 
 # Idea config files
 /.idea
+/config/database.yml
