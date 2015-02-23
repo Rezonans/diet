@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   acts_as_jwt_authentication_handler
-
-  before_action :set_user, only: [:show, :update]
+  load_and_authorize_resource
 
   def show
     render_resource_or_errors(@user)
@@ -13,10 +12,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     params.require(:user).permit(:daily_calories_limit)

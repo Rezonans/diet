@@ -5,6 +5,7 @@ gem 'rails-api'
 gem 'pg'
 gem 'jwt_authentication', :git => 'https://github.com/GitAlexei/jwt_authentication.git', :branch => 'master'
 gem 'devise'
+gem 'cancancan', '~> 1.10'
 
 
 group :development do
