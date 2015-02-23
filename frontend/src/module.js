@@ -10,5 +10,6 @@ angular.module('app', [
   'templates',
   'ui.router',
   'permission',
-  'satellizer'
+  'satellizer',
+  'restangular'
 ]);

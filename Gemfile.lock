@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/GitAlexei/jwt_authentication.git
-  revision: 470812ef79d64cb6f60cc66def516a6dcae5d518
+  revision: a2c63d148cc96889b8cb84bfe3e8f25ddb7e4da1
   branch: master
   specs:
-    jwt_authentication (0.0.2)
+    jwt_authentication (0.0.3)
       actionmailer (>= 3.2.6, < 5)
       actionpack (>= 3.2.6, < 5)
       devise (~> 3.2)
@@ -70,7 +70,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
-    globalid (0.3.2)
+    globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0)

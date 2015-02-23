@@ -1,0 +1,22 @@
+a.btn.btn-default(ng-click='addMeal()') Add meal
+
+table.table
+  tr
+    th ID
+    th Text
+    th Date
+    th Time
+    th Callories
+    th
+  tr(ng-repeat="meal in meals")
+    td {{meal.id}}
+    td {{meal.name}}
+    td {{meal.time | date:'mediumDate'}}
+    td {{meal.time | date:'shortTime'}}
+    td {{meal.calories}}
+    td.text-right
+      .btn-group
+        button.btn.btn-default.btn-link.btn-xs(type="button" ng-click="editMeal(meal)")
+          span.glyphicon.glyphicon-pencil
+        button.btn.btn-default.btn-link.btn-xs(type="button" ng-click="deleteMeal(meal)")
+          span.glyphicon.glyphicon-remove

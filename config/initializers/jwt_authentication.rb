@@ -8,7 +8,7 @@ JwtAuthentication.configure do |config|
   #
   # # Configure default fallback, that will be default for `acts_as_jwt_authentication_handler` calling.
   # # Possible values: :none, :devise, :response, :error
-  config.fallback = :error
+  config.fallback = :response
   #
   # # Configure default sign_in authentication reaction, that will be default for `acts_as_jwt_authentication_handler` calling.
   # # Possible values: :devise, :devise_session, :simplified
@@ -41,10 +41,14 @@ JwtAuthentication.configure do |config|
   # # Devise SessionsController generates jwt according to this parameter
   # config.jwt_timeout_remember_me = 1.month
   #
+  config.jwt_skip_authentication_for = {
+      'Devise::SessionsController' => [:create, :destroy],
+      'Devise::RegistrationsController' => [:create]
+  }
 
 end
 
 # # Configure list of Devise Controllers to be overridden. Those controllers will work via JSON.
 # # Note: request should contain 'Accept' header, that has 'application/json' value
 # # Possible controllers list: %i{registrations confirmations passwords sessions}
-JwtAuthentication.override_devise_controllers [:sessions, :passwords]
+JwtAuthentication.override_devise_controllers [:registrations, :sessions]
