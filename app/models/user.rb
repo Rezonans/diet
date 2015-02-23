@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # :recoverable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
 
-  has_many :meals, -> { order(:time, :id) }
+  has_many :meals
 
   def serializable_hash(options = {})
     options = { only: [:daily_calories_limit], methods: [:show]}.update(options || {})

@@ -3,8 +3,9 @@ class MealsController < ApplicationController
   load_and_authorize_resource :meal, through: :current_user
 
   def index
-    @meals = @meals.time_filter(filter_params[:date], :date).
-                    time_filter(filter_params[:time], :time)
+    @meals = @meals.time_filter(filter_params[:date], :date)
+                   .time_filter(filter_params[:time], :time)
+                   .order(:time, :id)
 
     render json: { resources: @meals }
   end
