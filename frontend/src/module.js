@@ -11,5 +11,6 @@ angular.module('app', [
   'ui.router',
   'permission',
   'satellizer',
-  'restangular'
+  'restangular',
+  'chart.js'
 ]);
