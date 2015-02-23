@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :meals
 
   def serializable_hash(options = {})
-    options = { only: [:daily_calories_limit], methods: [:show]}.update(options || {})
+    options = { only: [:daily_calories_limit, :id], methods: [:show]}.update(options || {})
     super(options)
   end
 end

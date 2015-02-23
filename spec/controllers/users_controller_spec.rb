@@ -28,19 +28,19 @@ RSpec.describe UsersController, type: :controller do
         create(:user)
       }
       it 'updates the requested user' do
-        put :update, {id: @user.to_param, user: new_attributes, user_token: @user_token}
+        put :update, {id: @user.to_param, resource: new_attributes, user_token: @user_token}
         @user.reload
         expect(@user.daily_calories_limit).to eq(new_attributes[:daily_calories_limit])
       end
 
       it 'returns changed user in response' do
-        put :update, {id: @user.to_param, user: new_attributes, user_token: @user_token}
+        put :update, {id: @user.to_param, resource: new_attributes, user_token: @user_token}
         user = JSON.parse(response.body)['resource']
         expect(user['daily_calories_limit']).to eq(new_attributes[:daily_calories_limit])
       end
 
       it 'allow update only own attributes' do
-        put :update, {id: user_2.to_param, user: new_attributes, user_token: @user_token}
+        put :update, {id: user_2.to_param, resource: new_attributes, user_token: @user_token}
         error = JSON.parse(response.body)['errors']
         expect(error).to eq('You are not authorized to access this page.')
       end

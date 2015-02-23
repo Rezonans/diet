@@ -1,0 +1,6 @@
+.h2 Settings
+form
+  .form-group
+    label(for="daily_calories_limit") Calories limit
+    input#daily_calories_limit.form-control(type="number", placeholder="Eg. 2000", ng-model="settings.daily_calories_limit")
+  button.btn.btn-default(type="submit", ng-click="update()") Update

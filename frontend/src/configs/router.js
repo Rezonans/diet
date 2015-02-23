@@ -24,6 +24,11 @@ angular.module('app')
         controller: 'MealsIndexCtrl',
         templateUrl: 'meals/index.html'
       })
+      .state('app.settings', {
+        url: '/settings',
+        controller: 'SettingsCtrl',
+        templateUrl: 'settings/settings.html'
+      })
       .state('auth', {
         abstract: true,
         templateUrl: 'auth/main.html',

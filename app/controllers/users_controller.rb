@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:daily_calories_limit)
+    params.require(:resource).permit(:daily_calories_limit)
   end
 
 end
