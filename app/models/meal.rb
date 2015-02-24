@@ -25,9 +25,4 @@ class Meal < ActiveRecord::Base
       end
     end
   end
-
-  scope :by_user, -> (user_id) do
-    where(user_id: user_id) if user_id
-  end
-
 end

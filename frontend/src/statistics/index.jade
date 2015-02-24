@@ -1,0 +1,40 @@
+h2 Calories statistics
+
+form.form-horizontal
+  .form-group
+    label.col-sm-2.control-label Date from
+    .col-sm-10
+      .input-group
+        input.form-control(type="text" datepicker-popup="mediumDate" ng-model="filters.dateFrom" is-open="openedDates.dateFrom" max-date="filter.dateTo" close-text="Close")
+        span.input-group-btn
+          button.btn.btn-default(type="button" ng-click="open('dateFrom', $event)")
+            span.glyphicon.glyphicon-calendar
+
+  .form-group
+    label.col-sm-2.control-label Date to
+    .col-sm-10
+      .input-group
+        input.form-control(type="text" datepicker-popup="mediumDate" ng-model="filters.dateTo" is-open="openedDates.dateTo" min-date="filter.dateFrom" close-text="Close")
+        span.input-group-btn
+          button.btn.btn-default(type="button" ng-click="open('dateTo', $event)")
+            span.glyphicon.glyphicon-calendar
+  .form-group
+    label.col-sm-2.control-label Time from
+    .col-sm-4
+      label.checkbox
+        input(type="checkbox" ng-model="showTimes.timeFrom" ng-change="toggleTime('timeFrom')")
+        | Set time from
+    .col-sm-6(ng-show="showTimes.timeFrom")
+      timepicker(ng-model="filters.timeFrom")
+  .form-group
+    label.col-sm-2.control-label Time to
+    .col-sm-4
+      label.checkbox
+        input(type="checkbox" ng-model="showTimes.timeTo" ng-change="toggleTime('timeTo')")
+        | Set time to
+    .col-sm-6(ng-show="showTimes.timeTo")
+      timepicker(ng-model="filters.timeTo")
+
+  button.btn.btn-success(ng-click="apply()") Apply
+
+canvas.chart.chart-line(data="data" labels="labels" series="series")

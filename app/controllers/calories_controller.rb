@@ -6,7 +6,7 @@ class CaloriesController < ApplicationController
     calories = @meals.time_filter(filter_date_params, :date)
                      .time_filter(filter_time_params, :time)
                      .calories_statistic
-    render json: calories
+    render json: { resources: calories }
   end
 
   private

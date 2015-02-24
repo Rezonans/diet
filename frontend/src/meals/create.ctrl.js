@@ -5,7 +5,6 @@
 angular.module('app').controller('MealCreateCtrl', function($scope, $modalInstance, Restangular) {
   $scope.ok = ok;
   $scope.cancel = cancel;
-  $scope.open = open;
   $scope.meal = {
     time: new Date()
   };
@@ -18,12 +17,5 @@ angular.module('app').controller('MealCreateCtrl', function($scope, $modalInstan
 
   function cancel() {
     $modalInstance.dismiss();
-  }
-
-  function open($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-
-    $scope.opened = true;
   }
 });

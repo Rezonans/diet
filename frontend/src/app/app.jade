@@ -10,7 +10,10 @@ nav.navbar.navbar-default.navbar-fixed-top
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
         li
-          a(ui-sref="app.dashboard") Home
+          a(ui-sref="app.dashboard") Meals
+      ul.nav.navbar-nav
+        li
+          a(ui-sref="app.statistics") Statistics
       ul.nav.navbar-nav.navbar-right
         li
           a(ui-sref="app.settings") Settings
@@ -18,5 +21,3 @@ nav.navbar.navbar-default.navbar-fixed-top
           a(href="javascript:;" ng-click="logout()") Logout
 .container
   .jumbotron(ui-view='')
-
-  canvas#line.chart.chart-line(data="data", labels="labels")

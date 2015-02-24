@@ -32,7 +32,7 @@ RSpec.describe CaloriesController, type: :controller do
                     time_to: '13:00'
                 }
       json = JSON.parse(response.body)
-      expect([json[0]['calories_sum'], json[1]['calories_sum']]).to match_array([3, 2])
+      expect([json['resources'][0]['calories_sum'], json['resources'][1]['calories_sum']]).to match_array([3, 2])
     end
 
     it 'shows statistics with date' do
@@ -43,14 +43,14 @@ RSpec.describe CaloriesController, type: :controller do
                     date_to: '2015-02-22'
                 }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['resources'].length).to eq(1)
     end
 
     it 'have no access to foreign meals stat' do
       user2 = create(:user)
       get :index, {user_token: UserAuthHelper.jwt_token(user2), user_id: user2.id}
       json = JSON.parse(response.body)
-      expect(json.length).to eq(0)
+      expect(json['resources'].length).to eq(0)
     end
 
   end

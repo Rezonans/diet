@@ -27,7 +27,18 @@ angular.module('app')
       .state('app.settings', {
         url: '/settings',
         controller: 'SettingsCtrl',
-        templateUrl: 'settings/settings.html'
+        templateUrl: 'settings/settings.html',
+        resolve: {
+          user: function(CurrentUser) { return CurrentUser.get(); }
+        }
+      })
+      .state('app.statistics', {
+        url: '/statistics',
+        controller: 'StatisticsIndexCtrl',
+        templateUrl: 'statistics/index.html',
+        resolve: {
+          user: function(CurrentUser) { return CurrentUser.get(); }
+        }
       })
       .state('auth', {
         abstract: true,

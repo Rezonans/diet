@@ -5,7 +5,6 @@
 angular.module('app').controller('MealEditCtrl', function($scope, $modalInstance, meal) {
   $scope.ok = ok;
   $scope.cancel = cancel;
-  $scope.open = open;
   $scope.meal = meal.clone();
 
   function ok() {
@@ -16,12 +15,5 @@ angular.module('app').controller('MealEditCtrl', function($scope, $modalInstance
 
   function cancel() {
     $modalInstance.dismiss();
-  }
-
-  function open($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-
-    $scope.opened = true;
   }
 });

@@ -2,20 +2,15 @@
 
 /* Controllers */
 
-angular.module('app').controller('SettingsCtrl', function($scope, $auth, Restangular) {
-  $scope.settings = {};
+angular.module('app').controller('SettingsCtrl', function($scope, $auth, user) {
+  $scope.settings = user.clone();
+
   $scope.update = update;
 
-  loadSettings();
-
-  function loadSettings() {
-    Restangular.one('users', $auth.getPayload().user.id).get().then(function(user) {
-      $scope.settings = user;
-    });
-  }
-
   function update() {
-    $scope.settings.save().then(function () {
+    $scope.settings.save().then(function(model) {
+      _.assign(user, model.plain());
+
       alert('Saved!');
     });
   }
