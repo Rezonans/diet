@@ -28,10 +28,8 @@ RSpec.describe CaloriesController, type: :controller do
       get :index, {
                     user_token: @user_token,
                     user_id: @user.id,
-                    time: {
-                        from: '9:00',
-                        to: '13:00'
-                    }
+                    time_from: '9:00',
+                    time_to: '13:00'
                 }
       json = JSON.parse(response.body)
       expect([json[0]['calories_sum'], json[1]['calories_sum']]).to match_array([3, 2])
@@ -41,10 +39,8 @@ RSpec.describe CaloriesController, type: :controller do
       get :index, {
                     user_token: @user_token,
                     user_id: @user.id,
-                    date: {
-                        from: '2015-02-22',
-                        to: '2015-02-22'
-                    }
+                    date_from: '2015-02-22',
+                    date_to: '2015-02-22'
                 }
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)

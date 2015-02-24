@@ -3,16 +3,26 @@ class CaloriesController < ApplicationController
   load_and_authorize_resource :meal, through: :current_user, parent: false
 
   def index
-    calories = @meals.time_filter(filter_params[:date], :date)
-                     .time_filter(filter_params[:time], :time)
+    calories = @meals.time_filter(filter_date_params, :date)
+                     .time_filter(filter_time_params, :time)
                      .calories_statistic
     render json: calories
   end
 
   private
 
-  def filter_params
-    params.permit({date: [:from, :to]}, {time: [:from, :to]})
+  def filter_date_params
+    params.permit([:date_from, :date_to]).tap do |data|
+      data[:from] = data.delete(:date_from)
+      data[:to] = data.delete(:date_to)
+    end
+  end
+
+  def filter_time_params
+    params.permit([:time_from, :time_to]).tap do |data|
+      data[:from] = data.delete(:time_from)
+      data[:to] = data.delete(:time_to)
+    end
   end
 
 end
