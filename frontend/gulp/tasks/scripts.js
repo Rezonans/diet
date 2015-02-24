@@ -16,7 +16,7 @@ gulp.task('js', function() {
   return gulp.src(mainBowerFiles({filter: '**/*.js'}).concat(config.scripts.src))
     .pipe(sourcemaps.init())
     .pipe(gulpif(function (file) {
-      return new RegExp("^src\/").test(path.relative(file.cwd, file.path));
+      return global.isProd && new RegExp("^src\/").test(path.relative(file.cwd, file.path));
     }, ngAnnotate()))
     .pipe(concat('app.js'))
     .pipe(gulpif(global.isProd, uglify()))
