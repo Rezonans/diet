@@ -53,11 +53,11 @@ angular.module('app').controller('StatisticsIndexCtrl', function($scope, Restang
   }
 
   function formatTime(time) {
-    return $filter('date')(time, 'HH:mm');
+    return $filter('date')(time, 'HH:mm', 'UTC');
   }
 
   function formatDate(time) {
-    return $filter('date')(time, 'yyyy-MM-dd');
+    return $filter('date')(time, 'yyyy-MM-dd', 'UTC');
   }
 
   function open(key, $event) {
